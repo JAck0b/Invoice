@@ -7,10 +7,12 @@ import java.util.Scanner;
  */
 
 class Interface {
+  private Invoice invoice;
   /**
    * Interface constructor.
    */
   Interface() {
+    invoice = new Invoice();
     String command = "";
     Scanner in = new Scanner(System.in);
     Info.write();
@@ -18,14 +20,16 @@ class Interface {
     while (!command.equals("exit")) {
       command = in.nextLine();
       switch (command) {
+        case "new":
+          break;
         case "add":
-          System.out.println("add");
+          invoice.add();
           break;
         case "delete":
           System.out.println("delete");
           break;
         case "display":
-          System.out.println("display");
+          invoice.display();
           break;
         case "save":
           System.out.println("save");

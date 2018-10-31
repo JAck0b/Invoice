@@ -6,7 +6,8 @@ package jakubfilistynski;
 public class Info {
   public Info () {}
   static void write () {
-    System.out.println("add - Add new product.\n" +
+    System.out.println("new - Create new invoice.\n" +
+      "add - Add new product.\n" +
       "delete - Delete product\n" +
       "info - Display all commands.\n" +
       "display - Display invoice.\n" +
