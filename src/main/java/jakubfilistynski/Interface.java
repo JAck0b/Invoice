@@ -7,12 +7,11 @@ import java.util.Scanner;
  */
 
 class Interface {
-  private Invoice invoice;
+  private Invoice invoice = new Invoice();
   /**
    * Interface constructor.
    */
   Interface() {
-    invoice = new Invoice();
     String command = "";
     Scanner in = new Scanner(System.in);
     Info.write();
