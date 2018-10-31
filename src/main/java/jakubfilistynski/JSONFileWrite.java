@@ -1,12 +1,10 @@
 package jakubfilistynski;
 
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 
-import java.io.FileWriter;
-import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 class Tmp {
   String nazwa;
@@ -22,17 +20,16 @@ class JSONFileWrite {
     JSONObject obj = new JSONObject();
     obj.put("Name", "Jakub");
     obj.put("Last name", "Filistyński");
-    String napis = obj.get("Name").toString();
+    String napis = obj.getString("Name");
     System.out.println(napis);
     JSONArray product = new JSONArray();
-    product.add("dfj");
-    product.add("zupa koza");
+    product.put("zupa psia");
+    product.put("zupa koza");
     obj.put("Produkt", product);
-    product = (JSONArray) obj.get("Produkt");
-    for (JSONObject x: (JSONObject) product) {
-      System.out.println(x.toString());
+    for (int i = 0; i < obj.getJSONArray("Produkt").length(); i++) {
+      System.out.println(obj.getJSONArray("Produkt").getString(i));
     }
-//
+////
 //
 //    try  {
 //      FileWriter file = new FileWriter("/home/jakub/Dokumenty/plik.txt");
