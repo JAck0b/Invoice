@@ -5,9 +5,9 @@ import java.util.Scanner;
 /**
  * This class is responsible for interface.
  */
-
 class Interface {
   private Invoice invoice = new Invoice();
+
   /**
    * Interface constructor.
    */
@@ -25,7 +25,7 @@ class Interface {
           invoice.add();
           break;
         case "delete":
-          System.out.println("delete");
+          invoice.delete();
           break;
         case "display":
           invoice.display();

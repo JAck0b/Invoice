@@ -1,5 +1,6 @@
 package jakubfilistynski;
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +24,7 @@ class Invoice {
       } catch (EmptyLineException e) {
         System.out.println(e.getMessage());
       }
-    } while(!condition);
+    } while (!condition);
 
     condition = false;
 
@@ -35,7 +36,7 @@ class Invoice {
       } catch (EmptyLineException e) {
         System.out.println(e.getMessage());
       }
-    } while(!condition);
+    } while (!condition);
 
     condition = false;
 
@@ -47,7 +48,7 @@ class Invoice {
       } catch (EmptyLineException e) {
         System.out.println(e.getMessage());
       }
-    } while(!condition);
+    } while (!condition);
 
     condition = false;
 
@@ -59,35 +60,34 @@ class Invoice {
       } catch (EmptyLineException e) {
         System.out.println(e.getMessage());
       }
-    } while(!condition);
+    } while (!condition);
 
     productList = new LinkedList<>();
-    data();
   }
 
-  private void setSellerFirstName(String name) throws EmptyLineException{
-    if(name.isEmpty()) {
+  private void setSellerFirstName(String name) throws EmptyLineException {
+    if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.sellerFirstName = name;
   }
 
-  private void setSellerLastName(String name) throws EmptyLineException{
-    if(name.isEmpty()) {
+  private void setSellerLastName(String name) throws EmptyLineException {
+    if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.sellerLastName = name;
   }
 
-  private void setCustomerFirstName(String name) throws EmptyLineException{
-    if(name.isEmpty()) {
+  private void setCustomerFirstName(String name) throws EmptyLineException {
+    if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.customerFirstName = name;
   }
 
-  private void setCustomerLastName(String name) throws EmptyLineException{
-    if(name.isEmpty()) {
+  private void setCustomerLastName(String name) throws EmptyLineException {
+    if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.customerLastName = name;
@@ -101,16 +101,27 @@ class Invoice {
     System.out.println("Seller: " + sellerFirstName + " " + sellerLastName);
     System.out.println("Customer: " + customerFirstName + " " + customerLastName);
     System.out.println();
+    int counter = 1;
     for (Product x: productList) {
+      System.out.println("Id: " + Integer.toString(counter));
       x.info();
+      counter++;
     }
     System.out.println("\n");
   }
-  /**
-   * Extra temporary method.
-   */
-  private void data() {
-    System.out.println(sellerFirstName + " " + sellerLastName);
-    System.out.println(customerFirstName + " " + customerLastName);
+
+  void delete() {
+    Scanner in = new Scanner(System.in);
+    display();
+    System.out.println("Enter product's id.");
+    try {
+      productList.remove(in.nextInt() - 1);
+    } catch (IndexOutOfBoundsException ex) {
+      System.out.println("Wrong product's id. Try again.");
+      in.nextLine();
+    } catch (InputMismatchException ie) {
+      System.out.println("This is not natural number. Try again.");
+      in.nextLine();
+    }
   }
 }

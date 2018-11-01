@@ -5,6 +5,7 @@ package jakubfilistynski;
  */
 
 public class App {
+
   /**
    * Main class.
    * @param args default arguments

@@ -1,6 +1,5 @@
 package jakubfilistynski;
 
-import javax.sound.midi.Soundbank;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -22,7 +21,7 @@ class Product {
       } catch (EmptyLineException e) {
         System.out.println(e.getMessage());
       }
-    } while(!condition);
+    } while (!condition);
 
     condition = false;
 
@@ -32,7 +31,7 @@ class Product {
         quantity = in.nextInt();
         condition = true;
       } catch (InputMismatchException ie) {
-        System.out.println("This is not natural number.");
+        System.out.println("This is not natural number. Try again.");
         in.nextLine();
       }
     } while (!condition);
@@ -45,16 +44,16 @@ class Product {
         price = in.nextDouble();
         condition = true;
       } catch (InputMismatchException ie) {
-        System.out.println("This is not real number.");
+        System.out.println("This is not real number. Try again.");
         in.nextLine();
       }
     } while (!condition);
 
-    this.totalCost = quantity*price;
+    this.totalCost = quantity * price;
   }
 
-  private void setName(String name) throws EmptyLineException{
-    if(name.isEmpty()) {
+  private void setName(String name) throws EmptyLineException {
+    if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.name = name;
