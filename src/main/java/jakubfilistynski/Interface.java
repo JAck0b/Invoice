@@ -6,12 +6,13 @@ import java.util.Scanner;
  * This class is responsible for interface.
  */
 class Interface {
-  private Invoice invoice = new Invoice();
+  private Invoice invoice;
 
   /**
    * Interface constructor.
    */
   Interface() {
+    invoice = new Invoice();
     String command = "";
     Scanner in = new Scanner(System.in);
     Info.write();
@@ -34,7 +35,7 @@ class Interface {
           invoice.save();
           break;
         case "load":
-          System.out.println("load");
+          invoice.load();
           break;
         case "info":
           Info.write();

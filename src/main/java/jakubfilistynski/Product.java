@@ -52,6 +52,13 @@ class Product {
     this.totalCost = quantity * price;
   }
 
+  Product(String name, int quantity, double price, double totalCost) {
+    this.name = name;
+    this.quantity = quantity;
+    this.price = price;
+    this.totalCost = totalCost;
+  }
+
   private void setName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");

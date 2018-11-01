@@ -65,28 +65,44 @@ class Invoice {
     productList = new LinkedList<>();
   }
 
-  private void setSellerFirstName(String name) throws EmptyLineException {
+  Invoice(String sellerFirstName, String sellerLastName, String customerFirstName, String customerLastName) {
+    this.sellerFirstName = sellerFirstName;
+    this.sellerLastName = sellerLastName;
+    this.customerFirstName = customerFirstName;
+    this.customerLastName = customerLastName;
+    productList = new LinkedList<>();
+  }
+
+  void addProduct(Product product) {
+    productList.add(product);
+  }
+
+  void setProductList(List<Product> productList) {
+    this.productList = productList;
+  }
+
+  void setSellerFirstName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.sellerFirstName = name;
   }
 
-  private void setSellerLastName(String name) throws EmptyLineException {
+  void setSellerLastName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.sellerLastName = name;
   }
 
-  private void setCustomerFirstName(String name) throws EmptyLineException {
+  void setCustomerFirstName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.customerFirstName = name;
   }
 
-  private void setCustomerLastName(String name) throws EmptyLineException {
+  void setCustomerLastName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
@@ -126,7 +142,12 @@ class Invoice {
   }
 
   void save() {
-    JsonFileWrite data = new JsonFileWrite(sellerFirstName, sellerLastName, customerFirstName,
+    JsonFileWrite.save(sellerFirstName, sellerLastName, customerFirstName,
         customerLastName, productList);
   }
+
+  void load() {
+    JsonFileReader.load(this);
+  }
+
 }

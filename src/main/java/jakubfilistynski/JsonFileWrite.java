@@ -10,8 +10,10 @@ import org.json.JSONObject;
 
 class JsonFileWrite {
 
-  JsonFileWrite(String sellerFirstName, String sellerLastName, String customerFirstName,
-                String customerLastName, List<Product> productList) {
+  JsonFileWrite() {}
+
+  static void save (String sellerFirstName, String sellerLastName, String customerFirstName,
+                    String customerLastName, List<Product> productList) {
     boolean condition = false;
     Scanner in = new Scanner(System.in);
     String name = "";
@@ -44,11 +46,11 @@ class JsonFileWrite {
     }
     jsonObject.put("Products", products);
 
-//    System.out.println(jsonObject.toString());
-    save(jsonObject, name);
+//  System.out.println(jsonObject.toString());
+    push(jsonObject, name);
   }
 
-  private void save(JSONObject obj, String path) {
+  private static void push(JSONObject obj, String path) {
     try {
       final String filePath = "./" + path + ".json";
       FileWriter file = new FileWriter(filePath);
