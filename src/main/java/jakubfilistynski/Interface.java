@@ -31,7 +31,7 @@ class Interface {
           invoice.display();
           break;
         case "save":
-          System.out.println("save");
+          invoice.save();
           break;
         case "load":
           System.out.println("load");

@@ -124,4 +124,9 @@ class Invoice {
       in.nextLine();
     }
   }
+
+  void save() {
+    JsonFileWrite data = new JsonFileWrite(sellerFirstName, sellerLastName, customerFirstName,
+        customerLastName, productList);
+  }
 }

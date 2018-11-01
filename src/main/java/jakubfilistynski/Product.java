@@ -65,4 +65,20 @@ class Product {
     System.out.println("Price: " + Double.toString(price));
     System.out.println("Total cost: " + Double.toString(totalCost) + "\n");
   }
+
+  String getName() {
+    return name;
+  }
+
+  String getQuantity() {
+    return Integer.toString(quantity);
+  }
+
+  String getPrice() {
+    return Double.toString(price);
+  }
+
+  String getTotalCost() {
+    return Double.toString(totalCost);
+  }
 }
