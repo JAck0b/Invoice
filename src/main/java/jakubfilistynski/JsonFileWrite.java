@@ -52,13 +52,15 @@ class JsonFileWrite {
 
   private static void push(JSONObject obj, String path) {
     try {
-      final String filePath = "./InVoices/" + path + ".json";
+      final String filePath = "./Invoices/" + path + ".json";
+      System.out.println(filePath);
       FileWriter file = new FileWriter(filePath);
       file.write(obj.toString());
       file.flush();
       file.close();
     } catch (IOException e) {
-      e.printStackTrace();
+      System.out.println("Failure. Try again.");
+//      e.printStackTrace();
     }
   }
 
