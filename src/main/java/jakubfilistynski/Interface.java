@@ -21,6 +21,8 @@ class Interface {
       command = in.nextLine();
       switch (command) {
         case "new":
+          invoice.create();
+          invoice = new Invoice();
           break;
         case "add":
           invoice.add();

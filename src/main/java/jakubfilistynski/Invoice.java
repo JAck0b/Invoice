@@ -73,10 +73,6 @@ class Invoice {
     productList = new LinkedList<>();
   }
 
-  void addProduct(Product product) {
-    productList.add(product);
-  }
-
   void setProductList(List<Product> productList) {
     this.productList = productList;
   }
@@ -150,4 +146,20 @@ class Invoice {
     JsonFileReader.load(this);
   }
 
+  void create() {
+    Scanner in = new Scanner(System.in);
+    System.out.println("Do you want to save current invoice first? [y/n]");
+    do {
+      String tmp = in.nextLine();
+      if (tmp.equals("y") || tmp.equals("Y")) {
+        save();
+        break;
+      } else if (tmp.equals("n") || tmp.equals("N")) {
+        break;
+      } else {
+        System.out.println("Invalid command.Try again.");
+        System.out.println("Do you want to save current invoice first? [y/n]");
+      }
+    } while (true);
+  }
 }
