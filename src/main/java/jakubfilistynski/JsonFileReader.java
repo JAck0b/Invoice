@@ -9,14 +9,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class JsonFileReader {
 
   JsonFileReader() {}
   static void load(Invoice invoice) {
-    final String filePath = "./kuba.json";
+    final String filePath = "./Invoices/kuba.json";
     try {
-      File file = new File("./kuba.json");
+      File file = new File(filePath);
       String content = FileUtils.readFileToString(file, "utf-8");
       JSONObject jsonObject = new JSONObject(content);
       invoice.setSellerFirstName(jsonObject.get("Seller First Name").toString());
@@ -36,5 +38,22 @@ class JsonFileReader {
     } catch (EmptyLineException e) {
       e.printStackTrace();
     }
+  }
+
+  public static void main (String[] args) {
+
+
+    File folder = new File("./Invoices/");
+    File[] listOfFiles = folder.listFiles();
+    Pattern myPattern = Pattern.compile(".*\\.json");
+
+    for (File file : listOfFiles) {
+      Matcher matcher = myPattern.matcher(file.getName());
+      if (file.isFile() && matcher.find()) {
+        System.out.println(file.getName());
+      }
+    }
+
+
   }
 }

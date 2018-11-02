@@ -52,7 +52,7 @@ class JsonFileWrite {
 
   private static void push(JSONObject obj, String path) {
     try {
-      final String filePath = "./" + path + ".json";
+      final String filePath = "./InVoices/" + path + ".json";
       FileWriter file = new FileWriter(filePath);
       file.write(obj.toString());
       file.flush();
