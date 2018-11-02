@@ -18,6 +18,6 @@ public class App {
       File dir = new File("./Invoices");
       dir.mkdir();
     }
-    Interface inter = new Interface();
+    Interface.init();
   }
 }

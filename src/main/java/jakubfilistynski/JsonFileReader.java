@@ -1,10 +1,5 @@
 package jakubfilistynski;
 
-
-import org.apache.commons.io.FileUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,6 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.io.FileUtils;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 class JsonFileReader {
 
@@ -37,7 +37,7 @@ class JsonFileReader {
       for (int i = 0; i < jsonArray.length(); i++) {
         JSONArray tmpArray = jsonArray.getJSONArray(i);
         tmpList.add(new Product(tmpArray.getString(0), tmpArray.getInt(1),
-          tmpArray.getDouble(2), tmpArray.getDouble(3)));
+            tmpArray.getDouble(2), tmpArray.getDouble(3)));
       }
       invoice.setProductList(tmpList);
     } catch (FileNotFoundException ie) {
@@ -47,7 +47,7 @@ class JsonFileReader {
     }
   }
 
-  private static void info () {
+  private static void info() {
     File folder = new File("./Invoices/");
     File[] listOfFiles = folder.listFiles();
     Pattern myPattern = Pattern.compile(".*\\.json");

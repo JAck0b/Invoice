@@ -6,13 +6,15 @@ import java.util.Scanner;
  * This class is responsible for interface.
  */
 class Interface {
-  private Invoice invoice;
+
 
   /**
    * Interface constructor.
    */
-  Interface() {
-    invoice = new Invoice();
+  Interface() {}
+
+  static void init() {
+    Invoice invoice = new Invoice();
     String command = "";
     Scanner in = new Scanner(System.in);
     Info.write();

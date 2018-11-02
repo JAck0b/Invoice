@@ -12,7 +12,7 @@ class JsonFileWrite {
 
   JsonFileWrite() {}
 
-  static void save (String sellerFirstName, String sellerLastName, String customerFirstName,
+  static void save(String sellerFirstName, String sellerLastName, String customerFirstName,
                     String customerLastName, List<Product> productList) {
     boolean condition = false;
     Scanner in = new Scanner(System.in);
@@ -46,21 +46,18 @@ class JsonFileWrite {
     }
     jsonObject.put("Products", products);
 
-//  System.out.println(jsonObject.toString());
     push(jsonObject, name);
   }
 
   private static void push(JSONObject obj, String path) {
     try {
       final String filePath = "./Invoices/" + path + ".json";
-      System.out.println(filePath);
       FileWriter file = new FileWriter(filePath);
       file.write(obj.toString());
       file.flush();
       file.close();
     } catch (IOException e) {
       System.out.println("Failure. Try again.");
-//      e.printStackTrace();
     }
   }
 

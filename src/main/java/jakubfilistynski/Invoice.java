@@ -65,7 +65,8 @@ class Invoice {
     productList = new LinkedList<>();
   }
 
-  Invoice(String sellerFirstName, String sellerLastName, String customerFirstName, String customerLastName) {
+  Invoice(String sellerFirstName, String sellerLastName, String customerFirstName,
+          String customerLastName) {
     this.sellerFirstName = sellerFirstName;
     this.sellerLastName = sellerLastName;
     this.customerFirstName = customerFirstName;
