@@ -16,7 +16,11 @@ public class App {
     File file = new File("./Invoices");
     if (!file.exists() || !file.isDirectory()) {
       File dir = new File("./Invoices");
-      dir.mkdir();
+      boolean condition = dir.mkdir();
+      if (!condition) {
+        System.out.println("Folder hasn't created.");
+        System.exit(1);
+      }
     }
     Interface.init();
   }

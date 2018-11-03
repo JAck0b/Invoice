@@ -12,7 +12,15 @@ class Invoice {
   private String customerLastName;
   private List<Product> productList;
 
-  Invoice() {
+
+  Invoice(boolean condition) {
+    if (condition)
+      productList = new LinkedList<>();
+    else
+      init();
+  }
+
+  private void init() {
     Scanner in = new Scanner(System.in);
     boolean condition = false;
 
@@ -65,15 +73,6 @@ class Invoice {
     productList = new LinkedList<>();
   }
 
-  Invoice(String sellerFirstName, String sellerLastName, String customerFirstName,
-          String customerLastName) {
-    this.sellerFirstName = sellerFirstName;
-    this.sellerLastName = sellerLastName;
-    this.customerFirstName = customerFirstName;
-    this.customerLastName = customerLastName;
-    productList = new LinkedList<>();
-  }
-
   void setProductList(List<Product> productList) {
     this.productList = productList;
   }
@@ -114,12 +113,14 @@ class Invoice {
     System.out.println("Seller: " + sellerFirstName + " " + sellerLastName);
     System.out.println("Customer: " + customerFirstName + " " + customerLastName);
     System.out.println();
+    double sum = 0;
     int counter = 1;
     for (Product x: productList) {
       System.out.println("Id: " + Integer.toString(counter));
-      x.info();
+      sum += x.info();
       counter++;
     }
+    System.out.println("\nTotal cost = " + Double.toString(sum));
     System.out.println("\n");
   }
 
@@ -150,16 +151,21 @@ class Invoice {
   void create() {
     Scanner in = new Scanner(System.in);
     System.out.println("Do you want to save current invoice first? [y/n]");
+    label:
     do {
       String tmp = in.nextLine();
-      if (tmp.equals("y") || tmp.equals("Y")) {
-        save();
-        break;
-      } else if (tmp.equals("n") || tmp.equals("N")) {
-        break;
-      } else {
-        System.out.println("Invalid command.Try again.");
-        System.out.println("Do you want to save current invoice first? [y/n]");
+      switch (tmp) {
+        case "y":
+        case "Y":
+          save();
+          break label;
+        case "n":
+        case "N":
+          break label;
+        default:
+          System.out.println("Invalid command.Try again.");
+          System.out.println("Do you want to save current invoice first? [y/n]");
+          break;
       }
     } while (true);
   }

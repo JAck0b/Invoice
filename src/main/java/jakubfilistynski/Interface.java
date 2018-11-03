@@ -14,9 +14,29 @@ class Interface {
   Interface() {}
 
   static void init() {
-    Invoice invoice = new Invoice();
     String command = "";
     Scanner in = new Scanner(System.in);
+    Invoice invoice = new Invoice(true);
+    Info.ready();
+    System.out.println("What do you want to do?\nnew - Create new invoice.\nload - Load existing invoice.\n" +
+      "exit - Shut down the program.");
+    while (!(command.equals("exit") || command.equals("new") || command.equals("load"))) {
+      command = in.nextLine();
+      switch (command) {
+        case "new":
+          invoice = new Invoice(false);
+          break;
+        case "load":
+          invoice = new Invoice(true);
+          invoice.load();
+          break;
+        case "exit":
+          System.exit(0);
+          break;
+        default:
+          System.out.println("Invalid command.");
+      }
+    }
     Info.write();
     Info.ready();
     while (!command.equals("exit")) {
@@ -24,7 +44,7 @@ class Interface {
       switch (command) {
         case "new":
           invoice.create();
-          invoice = new Invoice();
+          invoice = new Invoice(false);
           break;
         case "add":
           invoice.add();

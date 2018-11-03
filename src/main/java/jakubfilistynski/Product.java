@@ -28,10 +28,13 @@ class Product {
     System.out.println("Enter quantity of the product.");
     do {
       try {
-        quantity = in.nextInt();
+        setQuantity(in.nextInt());
         condition = true;
       } catch (InputMismatchException ie) {
         System.out.println("This is not natural number. Try again.");
+        in.nextLine();
+      } catch (NegativeNumberException ne) {
+        System.out.println(ne.getMessage());
         in.nextLine();
       }
     } while (!condition);
@@ -41,10 +44,13 @@ class Product {
     System.out.println("Enter price of the product.");
     do {
       try {
-        price = in.nextDouble();
+        setPrice(in.nextDouble());
         condition = true;
       } catch (InputMismatchException ie) {
         System.out.println("This is not real number. Try again.");
+        in.nextLine();
+      } catch (NegativeNumberException ne) {
+        System.out.println(ne.getMessage());
         in.nextLine();
       }
     } while (!condition);
@@ -66,11 +72,24 @@ class Product {
     this.name = name;
   }
 
-  void info() {
+  private void setQuantity(int quantity) throws NegativeNumberException {
+    if (quantity <= 0)
+      throw new NegativeNumberException("Negative number.Try again.");
+    this.quantity = quantity;
+  }
+
+  private void setPrice (double price) throws NegativeNumberException {
+    if (price <= 0)
+      throw new NegativeNumberException("Negative number.Try again.");
+    this.price = price;
+  }
+
+  double info() {
     System.out.println("Name: " + name);
     System.out.println("Quantity: " + Integer.toString(quantity));
     System.out.println("Price: " + Double.toString(price));
     System.out.println("Total cost: " + Double.toString(totalCost) + "\n");
+    return totalCost;
   }
 
   String getName() {

@@ -16,7 +16,7 @@ class JsonFileWrite {
                     String customerLastName, List<Product> productList) {
     boolean condition = false;
     Scanner in = new Scanner(System.in);
-    String name = "";
+    String name;
     System.out.println("Enter file's name.");
     do {
       name = in.nextLine();
