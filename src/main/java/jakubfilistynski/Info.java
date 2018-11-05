@@ -1,3 +1,6 @@
+// Copyright[2018] Jakub Filistyński
+// Info.java
+
 package jakubfilistynski;
 
 /**
@@ -5,8 +8,14 @@ package jakubfilistynski;
  */
 public class Info {
 
+  /**
+   * Empty constructor.
+   */
   public Info() {}
 
+  /**
+   * Method which print information about commands.
+   */
   static void write() {
     System.out.println("new - Create new invoice.\n"
         + "add - Add new product.\n"
@@ -18,6 +27,9 @@ public class Info {
         + "exit - Shut down program.");
   }
 
+  /**
+   * Method which print special symbol at the beggining of new line.
+   */
   static void ready() {
     System.out.print("$ ");
   }

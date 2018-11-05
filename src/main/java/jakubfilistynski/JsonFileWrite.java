@@ -1,3 +1,6 @@
+// Copyright[2018] Jakub Filistyński
+// JsonFileWrite.java
+
 package jakubfilistynski;
 
 import java.io.FileWriter;
@@ -8,10 +11,24 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * This class is responsible for writting invoice into json's file.
+ */
 class JsonFileWrite {
 
+  /**
+   * Empty constructor.
+   */
   JsonFileWrite() {}
 
+  /**
+   * This method prepare's data to save and saves them.
+   * @param sellerFirstName seller's first name
+   * @param sellerLastName seller's last name
+   * @param customerFirstName customer's first name
+   * @param customerLastName customer's last name
+   * @param productList list of products
+   */
   static void save(String sellerFirstName, String sellerLastName, String customerFirstName,
                     String customerLastName, List<Product> productList) {
     boolean condition = false;
@@ -49,6 +66,11 @@ class JsonFileWrite {
     push(jsonObject, name);
   }
 
+  /**
+   * This class saves data into file.
+   * @param obj ready json's object
+   * @param path name of file
+   */
   private static void push(JSONObject obj, String path) {
     try {
       final String filePath = "./Invoices/" + path + ".json";

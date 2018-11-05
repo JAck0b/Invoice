@@ -1,14 +1,23 @@
+// Copyright[2018] Jakub Filistyński
+// Product.java
+
 package jakubfilistynski;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * This class represents product.
+ */
 class Product {
   private String name;
   private int quantity;
   private double price;
   private double totalCost;
 
+  /**
+   * This constructor create new product.
+   */
   Product() {
     boolean condition = false;
     Scanner in = new Scanner(System.in);
@@ -58,6 +67,13 @@ class Product {
     this.totalCost = quantity * price;
   }
 
+  /**
+   * This constructor loads existing product.
+   * @param name name of product
+   * @param quantity quantity of product
+   * @param price price of product
+   * @param totalCost total cost of this products
+   */
   Product(String name, int quantity, double price, double totalCost) {
     this.name = name;
     this.quantity = quantity;
@@ -65,25 +81,46 @@ class Product {
     this.totalCost = totalCost;
   }
 
-  private void setName(String name) throws EmptyLineException {
+  /**
+   * Setter of name of product.
+   * @param name name of product
+   * @throws EmptyLineException empty name of product
+   */
+  void setName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
     }
     this.name = name;
   }
 
-  private void setQuantity(int quantity) throws NegativeNumberException {
-    if (quantity <= 0)
+  /**
+   * Setter of quantity of product.
+   * @param quantity quantity of product
+   * @throws NegativeNumberException negative quantity
+   */
+  void setQuantity(int quantity) throws NegativeNumberException {
+    if (quantity <= 0) {
       throw new NegativeNumberException("Negative number.Try again.");
+    }
     this.quantity = quantity;
   }
 
-  private void setPrice (double price) throws NegativeNumberException {
-    if (price <= 0)
+  /**
+   * Setter of price of product.
+   * @param price price of product
+   * @throws NegativeNumberException negative quantity
+   */
+  void setPrice(double price) throws NegativeNumberException {
+    if (price <= 0) {
       throw new NegativeNumberException("Negative number.Try again.");
+    }
     this.price = price;
   }
 
+  /**
+   * This method print informations about product.
+   * @return total cost of this one
+   */
   double info() {
     System.out.println("Name: " + name);
     System.out.println("Quantity: " + Integer.toString(quantity));
@@ -92,18 +129,34 @@ class Product {
     return totalCost;
   }
 
+  /**
+   * Getter of name of product.
+   * @return name of product
+   */
   String getName() {
     return name;
   }
 
+  /**
+   * Getter of quantity of product.
+   * @return quantity of product
+   */
   String getQuantity() {
     return Integer.toString(quantity);
   }
 
+  /**
+   * Getter of price of product.
+   * @return price of product
+   */
   String getPrice() {
     return Double.toString(price);
   }
 
+  /**
+   * Getter of total cost of products.
+   * @return total cost of products
+   */
   String getTotalCost() {
     return Double.toString(totalCost);
   }

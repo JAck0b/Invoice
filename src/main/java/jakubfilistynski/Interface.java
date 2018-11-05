@@ -1,3 +1,6 @@
+// Copyright[2018] Jakub Filistyński
+// Interface.java
+
 package jakubfilistynski;
 
 import java.util.Scanner;
@@ -13,13 +16,16 @@ class Interface {
    */
   Interface() {}
 
+  /**
+   * This method is responsible for interface.
+   */
   static void init() {
     String command = "";
     Scanner in = new Scanner(System.in);
     Invoice invoice = new Invoice(true);
     Info.ready();
-    System.out.println("What do you want to do?\nnew - Create new invoice.\nload - Load existing invoice.\n" +
-      "exit - Shut down the program.");
+    System.out.println("What do you want to do?\nnew - Create new invoice.\n"
+        + "load - Load existing invoice.\n" + "exit - Shut down the program.");
     while (!(command.equals("exit") || command.equals("new") || command.equals("load"))) {
       command = in.nextLine();
       switch (command) {

@@ -1,3 +1,6 @@
+// Copyright[2018] Jakub Filistyński
+// App.java
+
 package jakubfilistynski;
 
 import java.io.File;
@@ -24,4 +27,6 @@ public class App {
     }
     Interface.init();
   }
+
+
 }

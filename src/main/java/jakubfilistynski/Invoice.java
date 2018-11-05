@@ -1,3 +1,6 @@
+// Copyright[2018] Jakub Filistyński
+// Invoice.java
+
 package jakubfilistynski;
 
 import java.util.InputMismatchException;
@@ -5,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class represents invoice.
+ */
 class Invoice {
   private String sellerFirstName;
   private String sellerLastName;
@@ -12,14 +18,21 @@ class Invoice {
   private String customerLastName;
   private List<Product> productList;
 
-
+  /**
+   * Constructor.
+   * @param condition switch which constructor should be used
+   */
   Invoice(boolean condition) {
-    if (condition)
+    if (condition) {
       productList = new LinkedList<>();
-    else
+    } else {
       init();
+    }
   }
 
+  /**
+   * This method is responsible for getting data from user.
+   */
   private void init() {
     Scanner in = new Scanner(System.in);
     boolean condition = false;
@@ -73,10 +86,19 @@ class Invoice {
     productList = new LinkedList<>();
   }
 
+  /**
+   * Setter of product list.
+   * @param productList list of products in invoice
+   */
   void setProductList(List<Product> productList) {
     this.productList = productList;
   }
 
+  /**
+   * Setter of seller's first name.
+   * @param name seller's first name
+   * @throws EmptyLineException empty name exception
+   */
   void setSellerFirstName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
@@ -84,6 +106,11 @@ class Invoice {
     this.sellerFirstName = name;
   }
 
+  /**
+   * Setter of seller's last name.
+   * @param name seller's last name
+   * @throws EmptyLineException empty name exception
+   */
   void setSellerLastName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
@@ -91,6 +118,11 @@ class Invoice {
     this.sellerLastName = name;
   }
 
+  /**
+   * Setter of customer's first name.
+   * @param name customer's first name
+   * @throws EmptyLineException empty name exception
+   */
   void setCustomerFirstName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
@@ -98,6 +130,11 @@ class Invoice {
     this.customerFirstName = name;
   }
 
+  /**
+   * Setter of customer's last name.
+   * @param name customer's last name
+   * @throws EmptyLineException empty name exception
+   */
   void setCustomerLastName(String name) throws EmptyLineException {
     if (name.replaceAll("\\s", "").isEmpty()) {
       throw new EmptyLineException("Empty name. Try again.");
@@ -105,10 +142,16 @@ class Invoice {
     this.customerLastName = name;
   }
 
+  /**
+   * This method adds new product to the list of products.
+   */
   void add() {
     productList.add(new Product());
   }
 
+  /**
+   * This method displays informations about invoice.
+   */
   void display() {
     System.out.println("Seller: " + sellerFirstName + " " + sellerLastName);
     System.out.println("Customer: " + customerFirstName + " " + customerLastName);
@@ -120,10 +163,13 @@ class Invoice {
       sum += x.info();
       counter++;
     }
-    System.out.println("\nTotal cost = " + Double.toString(sum));
+    System.out.println("Total cost = " + Double.toString(sum));
     System.out.println("\n");
   }
 
+  /**
+   * This method deletes particular product form list of products.
+   */
   void delete() {
     Scanner in = new Scanner(System.in);
     display();
@@ -139,15 +185,24 @@ class Invoice {
     }
   }
 
+  /**
+   * This method saves invoice.
+   */
   void save() {
     JsonFileWrite.save(sellerFirstName, sellerLastName, customerFirstName,
         customerLastName, productList);
   }
 
+  /**
+   * This method loads existing invoice.
+   */
   void load() {
     JsonFileReader.load(this);
   }
 
+  /**
+   * This method creates new invoice and sometimes saves current one.
+   */
   void create() {
     Scanner in = new Scanner(System.in);
     System.out.println("Do you want to save current invoice first? [y/n]");

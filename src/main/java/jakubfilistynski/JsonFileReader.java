@@ -1,3 +1,6 @@
+// Copyright[2018] Jakub Filistyński
+// JsonFileReader.java
+
 package jakubfilistynski;
 
 import java.io.File;
@@ -14,10 +17,20 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * This class if responsible for reading file to program from json's file.
+ */
 class JsonFileReader {
 
+  /**
+   * Empty constructor.
+   */
   JsonFileReader() {}
 
+  /**
+   * This method is responsible for loading file.
+   * @param invoice main invoice
+   */
   static void load(Invoice invoice) {
     info();
     System.out.println("\n");
@@ -47,6 +60,9 @@ class JsonFileReader {
     }
   }
 
+  /**
+   * This method prints all json's file in directory invoice.
+   */
   private static void info() {
     File folder = new File("./Invoices/");
     File[] listOfFiles = folder.listFiles();
