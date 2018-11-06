@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="545.0" y="659.0">jakubfilistynski.EmptyLineException</node>
+    <node x="716.0" y="510.0">jakubfilistynski.Info</node>
+    <node x="0.0" y="659.0">jakubfilistynski.Interface</node>
+    <node x="0.0" y="784.0">jakubfilistynski.App</node>
+    <node x="358.0" y="0.0">jakubfilistynski.Product</node>
+    <node x="189.0" y="659.0">jakubfilistynski.NegativeNumberException</node>
+    <node x="480.0" y="510.0">jakubfilistynski.JsonFileReader</node>
+    <node x="0.0" y="0.0">jakubfilistynski.Invoice</node>
+    <node x="0.0" y="510.0">jakubfilistynski.JsonFileWrite</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.9" x="362.55555555555554" y="1117.111111111111" />
+  <SelectedNodes>
+    <node>jakubfilistynski.EmptyLineException</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
